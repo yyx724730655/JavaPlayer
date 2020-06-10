@@ -9,8 +9,6 @@
         <collection property="courseList" column="sid" javaType="ArrayList" ofType="course" select="yyx.ssm.dao.CourseDao.findCourseBySid"/>
     </resultMap>
 
-
-
     <select id="findAllStudent" resultMap="studentResultMap">
         select * from student
     </select>

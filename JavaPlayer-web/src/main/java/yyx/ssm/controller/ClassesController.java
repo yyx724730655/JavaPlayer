@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import yyx.ssm.api.ClassesService;
+import yyx.ssm.api.StudentService;
 import yyx.ssm.domain.Classes;
 import yyx.ssm.domain.Student;
-import yyx.ssm.service.ClassesService;
-import yyx.ssm.service.StudentService;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

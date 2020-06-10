@@ -1,9 +1,10 @@
 package yyx.ssm.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable {
     private long sid;
     private String sname;
     private String sex;
