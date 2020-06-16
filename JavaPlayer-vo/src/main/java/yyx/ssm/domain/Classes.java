@@ -1,6 +1,8 @@
 package yyx.ssm.domain;
 
-public class Classes {
+import java.io.Serializable;
+
+public class Classes implements Serializable {
     private long cid;
     private String cname;
     private String category;

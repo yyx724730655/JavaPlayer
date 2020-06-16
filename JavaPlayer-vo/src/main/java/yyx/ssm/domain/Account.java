@@ -1,6 +1,8 @@
 package yyx.ssm.domain;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private int aid;
     private String aname;
     private double money;

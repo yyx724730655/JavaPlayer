@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -11,11 +12,66 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx
-	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!--开启注解的扫描，希望处理service和dao，controller不需要Spring框架去处理-->
     <context:component-scan base-package="yyx.ssm.*">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!--使用dubbo发布服务-->
+    <!--声明服务提供方,提供方应用信息，用于计算依赖关系-->
+    <dubbo:application name="JavaPlayer-service"/>
+    <!--注册中心地址-->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <!--用dubbo协议在20880端口暴露服务-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:annotation package="yyx.ssm.service"/>
+    <!--声明需要暴露的服务接口,服务注册-->
+    <dubbo:service interface="yyx.ssm.api.StudentService" ref="studentService"/>
+    <dubbo:service interface="yyx.ssm.api.AccountService" ref="accountService"/>
+    <dubbo:service interface="yyx.ssm.api.ClassesService" ref="classesService"/>
+    <dubbo:service interface="yyx.ssm.api.CourseService" ref="courseService"/>
+
+    <!--配置dao接口所在包-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="yyx.ssm.dao"/>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
+        <property name="user" value="system"/>
+        <property name="password" value="oracle123"/>
+    </bean>
+
+    <!--配置SqlSessionFactory工厂--><!-- spring和MyBatis完美整合 -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--如果mybatis-config.xml没有特殊配置也可以不需要下面的配置-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!--配置Spring框架声明式事务管理-->
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置事务通知-->
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="*" isolation="DEFAULT"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置AOP增强-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice"  pointcut="execution(* yyx.ssm.service.impl.*ServiceImpl.*(..))"/>
+    </aop:config>
 </beans>

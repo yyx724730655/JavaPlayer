@@ -134,10 +134,16 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.1.0</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
@@ -148,7 +154,7 @@
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
 </project>

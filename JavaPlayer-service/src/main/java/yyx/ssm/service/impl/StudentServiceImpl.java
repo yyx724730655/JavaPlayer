@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yyx.ssm.dao.StudentDao;
 import yyx.ssm.domain.Student;
-import yyx.ssm.service.StudentService;
+import yyx.ssm.api.StudentService;
 
 import java.util.List;
 

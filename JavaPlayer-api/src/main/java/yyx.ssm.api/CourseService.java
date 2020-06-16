@@ -1,4 +1,4 @@
-package yyx.ssm.service;
+package yyx.ssm.api;
 
 import yyx.ssm.domain.Course;
 

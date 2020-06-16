@@ -3,13 +3,16 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!--开启SpringMVC注解的支持-->
     <mvc:annotation-driven/>
@@ -30,4 +33,15 @@
     <mvc:resources mapping="/css/" location="/css/**"/>
     <mvc:resources mapping="/images/" location="/images/**"/>
 
+    <!--引用dubbo服务-->
+    <dubbo:application name="JavaPlayer-web"/>
+
+    <dubbo:annotation package="yyx.ssm.controller"/>
+    <!--注册中心-->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <!--服务消费-->
+    <dubbo:reference interface="yyx.ssm.api.StudentService" id="studentService"/>
+    <dubbo:reference interface="yyx.ssm.api.AccountService" id="accountService"/>
+    <dubbo:reference interface="yyx.ssm.api.ClassesService" id="classesService"/>
+    <dubbo:reference interface="yyx.ssm.api.CourseService" id="courseService"/>
 </beans>

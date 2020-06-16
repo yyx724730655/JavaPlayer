@@ -1,8 +1,9 @@
 package yyx.ssm.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Course {
+public class Course implements Serializable {
     private long couid;
     private String couname;
     private List<Student> studentList;

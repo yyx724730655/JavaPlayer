@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import yyx.ssm.api.AccountService;
 import yyx.ssm.domain.Account;
-import yyx.ssm.service.AccountService;
 
 
 import java.util.List;

@@ -14,6 +14,7 @@
         <module>JavaPlayer-web</module>
         <module>JavaPlayer-vo</module>
         <module>JavaPlayer-common</module>
+        <module>JavaPlayer-api</module>
     </modules>
 
 

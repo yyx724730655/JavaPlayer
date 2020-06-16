@@ -10,26 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>yyx</groupId>
-    <artifactId>JavaPlayer-web</artifactId>
-    <packaging>war</packaging>
+    <artifactId>JavaPlayer-api</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>yyx</groupId>
-            <artifactId>JavaPlayer-common</artifactId>
+            <artifactId>JavaPlayer-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>yyx</groupId>
-            <artifactId>JavaPlayer-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!-- <dependency>
-             <groupId>yyx</groupId>
-             <artifactId>JavaPlayer-service</artifactId>
-             <version>1.0-SNAPSHOT</version>
-         </dependency>-->
     </dependencies>
-
-
 </project>

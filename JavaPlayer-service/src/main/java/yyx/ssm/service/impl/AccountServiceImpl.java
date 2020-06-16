@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yyx.ssm.dao.AccountDao;
 import yyx.ssm.domain.Account;
-import yyx.ssm.service.AccountService;
+import yyx.ssm.api.AccountService;
 
 import java.util.List;
 
