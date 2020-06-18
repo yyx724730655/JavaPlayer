@@ -13,7 +13,7 @@
         select * from student
     </select>
 
-    <insert useGeneratedKeys="true" id="saveStudent" parameterType="student">
+    <insert id="saveStudent" parameterType="student">
       <selectKey keyProperty="sid" resultType="int" order="BEFORE">
           select student_seq.nextval from dual
       </selectKey>
@@ -34,4 +34,25 @@
         </foreach>
         select 1 from dual
     </insert>
+
+    <delete id="deleteStudentBySid" parameterType="java.lang.String">
+        delete from student
+        <where>
+            sid=#{sid}
+        </where>
+    </delete>
+
+    <delete id="deleteStudentCourseBySid" parameterType="java.lang.String">
+        delete from student_course
+        <where>
+            sid=#{sid}
+        </where>
+    </delete>
+
+    <update id="updateStudentByDeleteClassesCid" parameterType="java.lang.String">
+        update student set cid=null
+        <where>
+            cid=#{cid}
+        </where>
+    </update>
 </mapper>

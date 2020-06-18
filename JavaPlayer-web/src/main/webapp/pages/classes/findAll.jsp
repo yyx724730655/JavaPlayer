@@ -18,6 +18,7 @@
                 <td>${cl.cid}</td>
                 <td>${cl.cname}</td>
                 <td><a href="showStudent?cid=${cl.cid}">查找该班级的学生</a></td>
+                <td><a href="deleteClasses?cid=${cl.cid}">删除班级</a></td>
             </tr>
         </c:forEach>
     </table>

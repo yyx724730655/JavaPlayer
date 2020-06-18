@@ -69,12 +69,7 @@ public class StudentController {
         student.setSex(sex);
         student.setBirthday(date);
         student.setCid(classes);
-        Account account=new Account();
-        account.setAname(name+"账户");
-        account.setMoney(0);
-        studentService.saveStudent(student);
-        account.setSid(student);
-        accountService.saveAccount(account);
+        student=studentService.saveStudent(student);
         model.addAttribute("info", "添加成功");
         return "student/info";
     }
@@ -100,4 +95,11 @@ public class StudentController {
         return "student/info";
     }
 
+    @RequestMapping("student/deleteStudent")
+    public String deleteStudent(HttpServletRequest request,Model model){
+        String sid=request.getParameter("sid");
+        studentService.deleteStudentBySid(sid);
+        model.addAttribute("info", "删除学生成功");
+        return "student/info";
+    }
 }

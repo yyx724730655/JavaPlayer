@@ -8,9 +8,11 @@ public interface StudentService {
 
     public List<Student> findAllStudent();
 
-    public void saveStudent(Student student);
+    public Student saveStudent(Student student);
 
     public List<Student> findStudentByCid(String cid);
 
     void saveStudentCourse(String sid, List<String> couidList);
+
+    void deleteStudentBySid(String sid);
 }

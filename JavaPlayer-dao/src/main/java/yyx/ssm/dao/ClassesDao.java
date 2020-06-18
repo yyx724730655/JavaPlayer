@@ -13,4 +13,6 @@ public interface ClassesDao {
     public Classes findClassesById(@Param("cid") String classesid);
 
     public void saveClasses(Classes classes);
+
+    void deleteClassesByCid(String cid);
 }

@@ -74,4 +74,6 @@
     <aop:config>
         <aop:advisor advice-ref="txAdvice"  pointcut="execution(* yyx.ssm.service.impl.*ServiceImpl.*(..))"/>
     </aop:config>
+
+    <bean id="redisUtil" class="yyx.ssm.util.RedisUtil"/>
 </beans>

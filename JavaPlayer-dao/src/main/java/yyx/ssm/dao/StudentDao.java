@@ -27,4 +27,10 @@ public interface StudentDao {
     public List<Student> findStudentByCid(String cid);
 
     void saveStudentCourse(@Param("sid") String sid, @Param("couidList") List<String> couidList);
+
+    void deleteStudentBySid(String sid);
+
+    void deleteStudentCourseBySid(String sid);
+
+    void updateStudentByDeleteClassesCid(String cid);
 }

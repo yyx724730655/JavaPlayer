@@ -22,6 +22,7 @@
             <td>${studentList.cid}</td>
             <td>${studentList.courseList}</td>
             <td><a href="selectCourse?sid=${studentList.sid}">选择课程</a> </td>
+            <td><a href="deleteStudent?sid=${studentList.sid}">删除学生</a> </td>
         </tr>
     </c:forEach>
 </table>

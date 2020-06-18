@@ -16,4 +16,6 @@ public interface AccountDao {
 
 //    @Select("select * from account where id=#{acid}")
     public Account getAccount(int acid);
+
+    void deleteAccountBySid(String sid);
 }

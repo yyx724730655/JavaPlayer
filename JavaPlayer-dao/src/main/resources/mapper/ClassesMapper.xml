@@ -26,4 +26,11 @@
       </selectKey>
         insert into classes(cid,cname,category) values (#{cid},#{cname},#{category})
     </insert>
+
+    <delete id="deleteClassesByCid" parameterType="java.lang.String">
+        delete from classes
+        <where>
+            cid=#{cid}
+        </where>
+    </delete>
 </mapper>

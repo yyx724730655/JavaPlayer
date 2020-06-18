@@ -55,4 +55,12 @@ public class ClassesController {
         model.addAttribute("stuList", list);
         return "classes/showstudent";
     }
+
+    @RequestMapping(value = "/deleteClasses")
+    public String deleteClasses(Model model, HttpServletRequest request) {
+        String cid = request.getParameter("cid");
+        classesService.deleteClassesByCid(cid);
+        model.addAttribute("info", "删除班级成功");
+        return "classes/info";
+    }
 }

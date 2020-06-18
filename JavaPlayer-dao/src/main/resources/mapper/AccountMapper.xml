@@ -19,4 +19,11 @@
         </selectKey>
             insert  into account(aid,sid,aname,money) values (#{aid},#{sid.sid},#{aname},#{money})
     </insert>
+
+    <delete id="deleteAccountBySid" parameterType="java.lang.String">
+        delete from account
+        <where>
+        sid=#{sid}
+        </where>
+    </delete>
 </mapper>
